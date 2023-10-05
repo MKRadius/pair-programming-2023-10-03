@@ -1,5 +1,8 @@
 export const useLogout = () => {
-  const logout = () => {};
+  const logout = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
 
   return { logout };
 };

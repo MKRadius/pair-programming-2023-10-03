@@ -4,11 +4,15 @@ export const useSignup = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
-  const signup = async () => {
+  const signup = async (name, email, password, password2) => {
     setIsLoading(true);
     setError(null);
 
     try {
+      if (password !== password2) {
+        throw new Error("Passwords do not match");
+      }
+
       const response = await fetch("/api/users", {
         method: "POST",
         headers: {
